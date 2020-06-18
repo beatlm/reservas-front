@@ -3,16 +3,32 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { LoginComponent } from './views/login/login.component';
+import { RegisterComponent } from './views/register/register.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { DynamicFormModule } from './dynamic-form/dynamic-form.module';
+import { HttpClientModule } from '@angular/common/http';
+import { DatePipe } from '@angular/common';
+import { AlertService } from './services/alert.service';
+import { ComponentsModule } from './lib/components/components.module';
+import { PerfilComponent } from './views/perfil/perfil/perfil.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent,
+    RegisterComponent,
+    PerfilComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    DynamicFormModule,
+    HttpClientModule,
+    ComponentsModule
   ],
-  providers: [],
+  providers: [DatePipe,AlertService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
