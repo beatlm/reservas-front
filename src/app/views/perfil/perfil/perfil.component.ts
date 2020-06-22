@@ -1,3 +1,4 @@
+import { UserModel } from './../../../model/UserModel';
 import { ClaseModel } from './../../../model/ClaseModel';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
@@ -7,49 +8,75 @@ import { ReservasService } from 'src/app/services/reservas.service';
 
 @Component({
   selector: 'app-perfil',
-  templateUrl: './perfil.component.html',
-  styleUrls: ['./perfil.component.css']
+  template: `<div class="container-fluid">
+  <h3 class="title">Mis reservas</h3>
+<h4>Hola {{usuario.nombre}}</h4>
+<mr-dynamic-form 
+  [config]="config"
+  (submitted)="formSubmitted($event)"
+  class="dynamicForm">
+</mr-dynamic-form>
+</div> `
+,  styleUrls: ['./perfil.component.css']
 })
  
 export class PerfilComponent implements OnInit {
-  private clases: ClaseModel [] ;
+  private usuario: UserModel;
+
+  private reservas: ClaseModel [] ;
   @ViewChild(DynamicFormComponent)
   public myForm: DynamicFormComponent;
   public config = [
-    {
-      name: "email",
-      type: "input",
-      label:"E-mail",
-      inputType:"email",
-      placeholder: "e-mail",
-      divClass: "container-fluid",
-      class:"form-control"
-    },
+    
     {
     name: "perfil",
     type: "table",
-    list:this.clases,
+    list:this.reservas,
     divClass: "container-fluid",
     class:"form-control"
-  }];
+  }, {
+    name: "disponiblesButton",
+    label: "Ver disponibles",
+    type: "button",
+    class:"btn btn-success ",
+    buttonType: "button",
+    divClass:"d-inline p-2 button",
+    click: () => {
+      this.router.navigate(["clases"]);
+    }
+  }
+
+];
 
   constructor(private router: Router,
     private reservasService: ReservasService) { 
       console.log("constructor");
       console.log(this.myForm);
-      this.clases=[new ClaseModel("2019-01-01", "23:00:00")];
+     // this.reservas=[new ClaseModel("2019-01-01", "23:00:00")];
     }
 private isOk(data){
-  console.log(data);
+  console.log("Recibimos :"+JSON.stringify(data));
+
+  this.reservas=data.reservas;
+console.log(data.reservas.length);
+console.log(this.reservas);
+  if(this.reservas.length==0){
+    console.log("Reservas es null")
+   // this.config[1].list=new Array(new ClaseModel("No tienes reservas",""));
+  }else{
+  
+    this.config[1].list=this.reservas;//TODO precargar clases
+  }
 }
 private catchError(data){
-  console.log("error en la llamda");
+  console.log("error en la llamada para obtener reservas");
+  //Mostrar alert de error al cargar las reservas
 }
 
   ngOnInit() {
-
-  this.reservasService.getUser$("beatlm@gmail.com").subscribe(this.isOk.bind(this), this.catchError.bind(this));//TODO obtener email
-  this.config[1].list=this.clases;//TODO precargar clases
+   this.usuario =JSON.parse(localStorage.getItem("currentUser"));
+  this.reservasService.getUser$(this.usuario.email).subscribe(this.isOk.bind(this), this.catchError.bind(this));//TODO obtener email
+  
   }
 
 }

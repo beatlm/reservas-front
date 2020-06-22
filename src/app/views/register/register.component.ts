@@ -5,12 +5,20 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-register',
-  templateUrl: './register.component.html',
+  template: 
+  `<div class="container-fluid">
+  <mr-dynamic-form 
+    [config]="config"
+    (submitted)="formSubmitted($event)"
+    class="dynamicForm">
+  </mr-dynamic-form>
+  </div> 
+`,
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
   @ViewChild(DynamicFormComponent)
-
+  public registerForm: DynamicFormComponent;
   public config = [
     {
       name: "nombre",
@@ -22,11 +30,11 @@ export class RegisterComponent implements OnInit {
       class:"form-control"
     },
     {
-      name: "apellidos",
+      name: "apellido",
       type: "input",
-      label:"Apellidos",
+      label:"Apellido",
       inputType:"text",
-      placeholder: "apellidos",
+      placeholder: "apellido",
       divClass: "container-fluid",
       class:"form-control"
     },
@@ -57,6 +65,17 @@ export class RegisterComponent implements OnInit {
       divClass:"d-inline p-2 button",
       click: form => {
       }
+    },
+    {
+      name: "volverButton",
+      label: "volver",
+      type: "button",
+      class:"btn btn-success ",
+      buttonType: "button",
+      divClass:"d-inline p-2 button",
+      click: () => {
+        this.router.navigate([""]);
+      }
     }
   ];
 
@@ -68,7 +87,7 @@ export class RegisterComponent implements OnInit {
 
   private isOkAdd(value) {
      
-    this.router.navigate(["search"]);
+    this.router.navigate([""]);
     console.log("El usuario se ha logado correctamente " + value.name);
   }
   private catchError(err) {

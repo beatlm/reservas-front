@@ -9,12 +9,13 @@ import { RegisterComponent } from './register/register.component';
 import { AuthenticationService } from '../services/authentication.service';
 import { AlertService } from '../services/alert.service';
 import { PerfilComponent } from './perfil/perfil/perfil.component';
+import { ClasesComponent } from './clases/clases/clases.component';
 
 @NgModule({
   imports: [
     CommonModule, AppRoutingModule, ComponentsModule, ReactiveFormsModule,DynamicFormModule
   ],
-  declarations: [LoginComponent,RegisterComponent, PerfilComponent],
+  declarations: [LoginComponent,RegisterComponent, PerfilComponent, ClasesComponent],
   exports: [LoginComponent,RegisterComponent,PerfilComponent],
   providers:[AuthenticationService, AlertService], 
 })

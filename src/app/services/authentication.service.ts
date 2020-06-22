@@ -13,10 +13,10 @@ import { UserLogin } from '../model/UserLogin';
   providedIn: 'root'
 })
 export class AuthenticationService {
-  //private registerUrl = "http://localhost:8080/reservas/register";
-  private registerUrl = "https://reservas-aikido-api.herokuapp.com/reservas/register";
-//  private loginUrl = "http://localhost:8080/reservas/authenticate";
-  private loginUrl = "https://reservas-aikido-api.herokuapp.com/reservas/authenticate";
+  private registerUrl = "http://localhost:8080/reservas/register";
+  //private registerUrl = "https://reservas-aikido-api.herokuapp.com/reservas/register";
+ private loginUrl = "http://localhost:8080/reservas/authenticate";
+  //private loginUrl = "https://reservas-aikido-api.herokuapp.com/reservas/authenticate";
   constructor(private http: HttpClient,
     public datepipe: DatePipe,
     public alertService: AlertService,

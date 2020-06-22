@@ -7,6 +7,10 @@ import { FormGroup } from '@angular/forms';
   <div [class]= "config.divClass"
   [formGroup]="group">
   <table [class] ="config.class">
+  <tr *ngIf="config.list == undefined || config.list.length== 0">
+  "No tienes reservas"
+  
+  </tr>
   <tr *ngFor="let data of config.list;let i = index">
       <td>{{data.dia}}</td>
       <td>{{data.hora}}</td>
@@ -16,6 +20,7 @@ import { FormGroup } from '@angular/forms';
           </a>
       </td>
   </tr>
+  
 </table>
 </div>
   `,
