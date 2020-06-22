@@ -8,7 +8,7 @@ import { FormGroup } from '@angular/forms';
   [formGroup]="group">
   <table [class] ="config.class">
   <tr *ngIf="config.list == undefined || config.list.length== 0">
-  "No tienes reservas"
+  {{config.empty}}
   
   </tr>
   <tr *ngFor="let data of config.list;let i = index">

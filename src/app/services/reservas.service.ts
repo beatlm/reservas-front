@@ -9,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ReservasService {
   private getUserUrl = "http://localhost:8080/reservas/api/usuario/findByEmail?email=";
-  private getClasesUrl = "http://localhost:8080/reservas/api/usuario/findByProfesor?profesor=";
+  private getClasesUrl = "http://localhost:8080/reservas/api/clase/findByProfesor?profesor=";
 
 
   constructor(private http: HttpClient) {}

@@ -16,7 +16,7 @@ import { ClasesComponent } from './clases/clases/clases.component';
     CommonModule, AppRoutingModule, ComponentsModule, ReactiveFormsModule,DynamicFormModule
   ],
   declarations: [LoginComponent,RegisterComponent, PerfilComponent, ClasesComponent],
-  exports: [LoginComponent,RegisterComponent,PerfilComponent],
+  exports: [LoginComponent,RegisterComponent,PerfilComponent, ClasesComponent],
   providers:[AuthenticationService, AlertService], 
 })
 export class ReservasModule { }

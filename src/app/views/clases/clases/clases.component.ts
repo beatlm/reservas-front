@@ -20,13 +20,13 @@ import { DynamicFormComponent } from 'src/app/dynamic-form/containers/dynamic-fo
 export class ClasesComponent implements OnInit {
   @ViewChild(DynamicFormComponent)
   public myForm: DynamicFormComponent;
-  private clases: Array <ClaseModel>;
   public config = [
     
     {
     name: "clases",
     type: "table",
-    list:this.clases,
+    list:"",
+    empty:"No hay clases disponibles",
     divClass: "container-fluid",
     class:"form-control"
   }, {
@@ -49,7 +49,9 @@ export class ClasesComponent implements OnInit {
     this.service.getClases$("Tomas").subscribe(this.isOk.bind(this),this.catchError.bind(this));
   }
   private isOk(value){
-console.log("ok");
+    console.log("Recibimos :"+JSON.stringify(value));
+    this.config[0].list=value;
+
   }
   private catchError(value){
 console.log("ko");

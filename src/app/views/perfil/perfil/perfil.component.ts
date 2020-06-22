@@ -32,6 +32,7 @@ export class PerfilComponent implements OnInit {
     name: "perfil",
     type: "table",
     list:this.reservas,
+    empty: "No tienes reservas",
     divClass: "container-fluid",
     class:"form-control"
   }, {
@@ -64,7 +65,7 @@ console.log(this.reservas);
     console.log("Reservas es null")
    // this.config[1].list=new Array(new ClaseModel("No tienes reservas",""));
   }else{
-  
+  console.log("Se han encontrado reservas")
     this.config[1].list=this.reservas;//TODO precargar clases
   }
 }

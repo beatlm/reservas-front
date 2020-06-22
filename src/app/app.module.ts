@@ -1,3 +1,4 @@
+import { ClasesComponent } from './views/clases/clases/clases.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -18,7 +19,8 @@ import { PerfilComponent } from './views/perfil/perfil/perfil.component';
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    PerfilComponent
+    PerfilComponent,
+    ClasesComponent
   ],
   imports: [
     BrowserModule,

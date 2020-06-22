@@ -1,3 +1,4 @@
+import { ClasesComponent } from './views/clases/clases/clases.component';
 import { PerfilComponent } from './views/perfil/perfil/perfil.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -20,6 +21,10 @@ const routes: Routes = [
     path: "perfil",
     component: PerfilComponent,
 
+  },
+  {
+    path: "clases",
+    component: ClasesComponent
   }
 ];
 @NgModule({
