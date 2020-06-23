@@ -13,6 +13,7 @@ import { DatePipe } from '@angular/common';
 import { AlertService } from './services/alert.service';
 import { ComponentsModule } from './lib/components/components.module';
 import { PerfilComponent } from './views/perfil/perfil/perfil.component';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { PerfilComponent } from './views/perfil/perfil/perfil.component';
     ReactiveFormsModule,
     DynamicFormModule,
     HttpClientModule,
-    ComponentsModule
+    ComponentsModule,
+    NoopAnimationsModule
   ],
   providers: [DatePipe,AlertService],
   bootstrap: [AppComponent]

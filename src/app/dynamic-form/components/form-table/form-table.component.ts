@@ -6,23 +6,24 @@ import { FormGroup } from '@angular/forms';
   template: `
   <div [class]= "config.divClass"
   [formGroup]="group">
-  <table [class] ="config.class">
+  <table mat-table [class] ="config.class">
   <tr *ngIf="config.list == undefined || config.list.length== 0">
   {{config.empty}}
   
   </tr>
   <tr *ngFor="let data of config.list;let i = index">
-      <td>{{data.dia}}</td>
+      <td>{{data.dia | date: 'dd/MM/yyyy'}}</td>
       <td>{{data.hora}}</td>
-      <td>
+      <td *ngIf="config.delete">
           <a class="btn-small" (click)="config.click(i)">
-              <i class="material-icons left">delete</i>
+              <i class="material-icons left">{{config.buttonOption}}</i>
           </a>
       </td>
   </tr>
   
 </table>
 </div>
+
   `,
   styles: []
 })
